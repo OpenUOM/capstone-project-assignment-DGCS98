@@ -44,7 +44,7 @@ export class TeacherTableComponent implements OnInit {
   }
 
   getTeacherData() {
-    this.selected = 'Teachers';
+    this.selected = 'Teacher';
     this.service.getTeacherData().subscribe((response) => {
       this.teacherData = Object.keys(response).map((key) => [response[key]]);
     }, (error) => {
@@ -53,7 +53,7 @@ export class TeacherTableComponent implements OnInit {
   }
 
   getStudentData() {
-    this.selected = 'Students';
+    this.selected = 'Student';
     this.service.getStudentData().subscribe((response) => {
       this.teacherData = response;
     }, (error) => {
