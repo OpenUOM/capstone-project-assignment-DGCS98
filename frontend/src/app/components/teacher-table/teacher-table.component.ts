@@ -43,7 +43,7 @@ export class TeacherTableComponent implements OnInit {
   }
 
   getTeacherData() {
-    this.selected = 'Teacher';
+    this.selected = 'Teachers';
     this.service.getTeacherData().subscribe((response) => {
       this.teacherData = Object.keys(response).map((key) => [response[key]]);
     }, (error) => {
@@ -52,25 +52,31 @@ export class TeacherTableComponent implements OnInit {
   }
 
   getStudentData() {
-    this.selected = 'Student';
+    this.selected = 'Students';
     this.service.getStudentData().subscribe((response) => {
       this.teacherData = response;
     }, (error) => {
       console.log('ERROR - ', error)
     })
   }
+
   search(value: string) {
-    if (value.length <= 0) {
+    // Initialize an empty array to store the found teachers.
+    const foundItems = [];
+  
+    // If the search string is empty, then get all of the teachers.
+    if (value.length === 0) {
       this.getTeacherData();
     } else {
-      const foundItems = this.teacherData.filter((teacher) => {
-        return teacher[0].name.toLowerCase().includes(value.toLowerCase());
+      // Filter the teacherData array to only include teachers whose names contain the search string.
+      const b = this.teacherData.filter((teacher) => {
+        return teacher[0].name.toLowerCase().indexOf(value) > -1;
       });
-      this.teacherData = foundItems;
+  
+      // Assign the filtered array to the teacherData variable.
+      this.teacherData = b;
     }
   }
-  
-  
 
   deleteTeacher(itemid) {
     const test = {
