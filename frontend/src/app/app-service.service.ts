@@ -18,7 +18,7 @@ export class AppServiceService {
   }
 
   initializeDB(){
-    return this.http.get(`/api/dbinitialize`)
+    return this.http.get('/api/dbinitialize')
   }
 
   getTeacherData(){
@@ -26,11 +26,11 @@ export class AppServiceService {
   }
 
   getStudentData(){
-    return this.http.get(`/api/listStudents`)
+    return this.http.get('/api/listStudents')
   }
 
   getOneStudentData(payload: Object){
-    return this.http.post(`/api/getStudentInfo`, payload)
+    return this.http.post('/api/getStudentInfo', payload)
   }
 
   getOneTeacherData(payload: Object){
@@ -50,14 +50,14 @@ export class AppServiceService {
   }
 
   editStudent(payload: Object){
-    return this.http.post(`/api/editStudent`, payload)
+    return this.http.post('/api/editStudent', payload)
   }
 
   addStudent(payload: Object){
-    return this.http.post(`/api/addStudent`, payload)
+    return this.http.post('/api/addStudent', payload)
   }
 
   deleteStudent(payload: Object){
-    return this.http.post(`/api/deleteStudent`, payload)
+    return this.http.post('/api/deleteStudent', payload)
   }
 }
