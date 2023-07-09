@@ -60,21 +60,17 @@ export class TeacherTableComponent implements OnInit {
     })
   }
 
-  search(value: string) {
-    // Initialize an empty array to store the found teachers.
-    const foundItems = [];
-  
-    // If the search string is empty, then get all of the teachers.
-    if (value.length === 0) {
+  search(value) {
+    let foundItems = [];
+    if (value.length <= 0) {
       this.getTeacherData();
     } else {
-      // Filter the teacherData array to only include teachers whose names contain the search string.
-      const b = this.teacherData.filter((teacher) => {
-        return teacher[0].name.toLowerCase().indexOf(value) > -1;
+      let b = this.teacherData.filter((teacher) => {
+        if (teacher[0].name.toLowerCase().indexOf(value) > -1) {
+          foundItems.push(teacher)
+        }
       });
-  
-      // Assign the filtered array to the teacherData variable.
-      this.teacherData = b;
+      this.teacherData = foundItems;
     }
   }
 
