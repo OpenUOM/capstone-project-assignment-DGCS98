@@ -29,11 +29,11 @@ app.get("/dbinitialize", async function (req, res) {
 // ============== Teacher Related endpoints ==============
 
 app.get("/listTeachers", async function (req, res) {
-  console.log("Request received to list teachers");
-  let data = await readTeachers();
-
-  res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(data));
+    console.log("Request received to list teachers");
+    let data = await readTeachers();
+    
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify(data));
 });
 
 app.post("/getTeacherInfo", async function (req, res) {
